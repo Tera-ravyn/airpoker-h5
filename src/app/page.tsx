@@ -1,15 +1,8 @@
 "use client";
-import { useMount } from "ahooks";
 
-import { PokerHand, PokerHandDB } from "../models/card";
-import { useState } from "react";
-import data from "../assets/poker_hands.json";
-import { useTranslations } from "next-intl";
 import Menu from "../pages/menu";
 
 export default function Home() {
-  const pokerDB = new PokerHandDB(data);
-
   // const [pokerDB, setPokerDB] = useState<PokerHandDB>();
   // useMount(() => {
   //   console.log("data", data);
