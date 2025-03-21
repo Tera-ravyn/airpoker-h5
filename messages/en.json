@@ -1,0 +1,35 @@
+{
+  "Settings": {
+    "volume": "音量",
+    "language": "语言",
+    "theme": "主题"
+  },
+  "Menu": {
+    "start": "开始游戏",
+    "settings": "设置",
+    "help": "帮助",
+    "about": "关于",
+    "exit": "退出游戏"
+  },
+  "Game": {
+    "newGame": "新游戏",
+    "resume": "继续游戏",
+    "pause": "暂停游戏",
+    "restart": "重新开始",
+    "score": "得分",
+    "level": "等级",
+    "time": "时间"
+  },
+  "Help": {
+    "instructions": "操作说明",
+    "controls": "控制方式",
+    "tips": "游戏技巧",
+    "rules": "游戏规则"
+  },
+  "Notifications": {
+    "gameOver": "游戏结束",
+    "victory": "恭喜获胜",
+    "pauseMessage": "游戏已暂停",
+    "resumeMessage": "继续游戏"
+  }
+}
