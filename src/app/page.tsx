@@ -1,8 +1,13 @@
 "use client";
 
+import { FadeOutnInAni } from "@/components/SceneSwitchAni";
 import Menu from "../pages/menu";
+import Desktop from "@/pages/game";
+import { useAtomValue } from "jotai";
+import { desktopAtom } from "@/models/jotai";
 
 export default function Home() {
+  const desktop = useAtomValue(desktopAtom);
   // const [pokerDB, setPokerDB] = useState<PokerHandDB>();
   // useMount(() => {
   //   console.log("data", data);
@@ -24,8 +29,9 @@ export default function Home() {
 
   return (
     <div className="h-screen w-full ">
+      <FadeOutnInAni />
       <div className="h-full w-full absolute -z-100 bg-black "></div>
-      <Menu />
+      {desktop ? <Desktop /> : <Menu />}
     </div>
   );
 }

@@ -114,7 +114,7 @@ const PokerCard: React.FC<PokerCardProps> = ({
   };
   return (
     <div
-      className={` text-xs md:text-lg w-16 h-24 md:w-24 md:h-36 bg-white rounded-lg shadow-sm shadow-black.30 overflow-hidden ${suitColor} ${className}`}
+      className={` text-xs md:text-lg w-16 h-24 md:w-24 md:h-36 bg-white rounded-lg shadow-sm shadow-black/30 overflow-hidden ${suitColor} ${className}`}
     >
       <div
         className="w-full h-full mix-blend-multiply absolute z-[999] rounded-lg"

@@ -14,13 +14,15 @@
 
   --animate-fallAndFlip: fallAndFlip 10s linear infinite;
   --animate-drift: drift 20s linear infinite;
+  --animate-fadeIn: fadeIn 3s ease-in-out;
+  --animate-fadeOut: fadeOut 3s ease-in-out;
 
   @keyframes fallAndFlip {
     0% {
-      transform: translate3d(0, -20vh, var(--translate-z));
+      transform: translate3d(0, -9rem, var(--translate-z));
     }
     100% {
-      transform: translate3d(0, 120vh, var(--translate-z))
+      transform: translate3d(0, 150vh, var(--translate-z))
         rotate3d(var(--flip-angel));
     }
   }
@@ -37,6 +39,24 @@
     }
     100% {
       transform: skew(0, 0);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 }

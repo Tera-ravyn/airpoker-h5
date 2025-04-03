@@ -4,6 +4,9 @@ import WaterAni from "../components/WaterAni";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
+import { useSetAtom } from "jotai";
+import { desktopAtom, switchAtom } from "@/models/jotai";
+import { useMount } from "ahooks";
 
 const MenuItem = ({
   onClick,
@@ -59,9 +62,14 @@ const About = () => {
 const Menu = () => {
   const t = useTranslations("Menu");
   const [open, setOpen] = useState(false);
+  const setSwitchAni = useSetAtom(switchAtom);
+  const setDesktop = useSetAtom(desktopAtom);
   const handleSwipe = () => {
     setOpen(!open);
   };
+  useMount(() => {
+    setSwitchAni(false);
+  });
 
   return (
     <div className="w-full h-full overflow-hidden">
@@ -83,7 +91,14 @@ const Menu = () => {
           <PokerAni count={10} />
           <Image src="/logo.png" alt="logo" width={400} height={200} />
           <div className="w-1/2 flex flex-col justify-center items-center">
-            <MenuItem onClick={() => {}}>{t("start")}</MenuItem>
+            <MenuItem
+              onClick={() => {
+                setSwitchAni(true);
+                // setDesktop(true);
+              }}
+            >
+              {t("start")}
+            </MenuItem>
             <Divider />
             <MenuItem onClick={handleSwipe}>{t("settings")}</MenuItem>
             <Divider />
