@@ -3,9 +3,15 @@ import { PokerHandDB } from "../models/card";
 import data from "../assets/poker_hands.json";
 import { useMount, useUnmount } from "ahooks";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { desktopAtom, settingsAtom, switchAtom } from "@/models/jotai";
+import {
+  cardPanelAtom,
+  desktopAtom,
+  settingsAtom,
+  switchAtom,
+} from "@/models/jotai";
 import { FaGear } from "react-icons/fa6";
 import { createPortal } from "react-dom";
+import { useState } from "react";
 const pokerDB = new PokerHandDB(data);
 enum Suit {
   "C" = 0,
@@ -118,8 +124,45 @@ const Desktop = () => {
   });
   return (
     <div id="modal-root" className="w-full h-full bg-white relative">
+      <CardPanel />
       <Settings />
     </div>
   );
 };
 export default Desktop;
+
+//制牌界面
+const CardPanel = () => {
+  const [cardPanel, setCardPanel] = useAtom(cardPanelAtom);
+  const [suit, setSuit] = useState<Suit | null>(null);
+  return (
+    <>
+      <button
+        className="rounded-md bg-black/50 text-white p-4"
+        onClick={() => {
+          setCardPanel(true);
+        }}
+      >
+        制牌
+      </button>
+      <Modal isOpen={cardPanel} onClose={() => setCardPanel(false)}>
+        <div className="bg-black/50 p-6 rounded-md min-w-64 h-64 flex justify-center items-center gap-4">
+          {suit ? (
+            <>{new Array(13)}</>
+          ) : (
+            <>
+              <button className="bg-white p-4 rounded-md text-2xl">♠</button>
+              <button className="bg-white p-4 rounded-md text-2xl text-red-500">
+                ♥
+              </button>
+              <button className="bg-white p-4 rounded-md text-2xl">♣</button>
+              <button className="bg-white p-4 rounded-md text-2xl text-red-500">
+                ♦
+              </button>
+            </>
+          )}
+        </div>
+      </Modal>
+    </>
+  );
+};
